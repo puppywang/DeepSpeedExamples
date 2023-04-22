@@ -33,4 +33,4 @@ deepspeed main.py \
    --lora_module_name decoder.layers. \
    --deepspeed \
    --output_dir $OUTPUT \
-   &> $OUTPUT/training.log
+  | tee $OUTPUT/training.log

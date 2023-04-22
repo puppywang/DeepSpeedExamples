@@ -25,4 +25,4 @@ deepspeed main.py \
    --zero_stage 3 \
    --deepspeed \
    --output_dir $OUTPUT_PATH \
-   &> $OUTPUT_PATH/training.log
+  | tee $OUTPUT_PATH/training.log

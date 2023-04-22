@@ -28,4 +28,4 @@ deepspeed main.py \
    --only_optimize_lora \
    --deepspeed \
    --output_dir $OUTPUT_PATH \
-   &> $OUTPUT_PATH/training.log
+  | tee $OUTPUT_PATH/training.log

@@ -21,4 +21,4 @@ deepspeed main.py \
    --deepspeed --seed 1234 --num_warmup_steps 0 \
    --lr_scheduler_type cosine \
    --output_dir $OUTPUT_PATH \
-   &> $OUTPUT_PATH/training.log
+  | tee $OUTPUT_PATH/training.log

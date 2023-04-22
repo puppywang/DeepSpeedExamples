@@ -47,4 +47,4 @@ deepspeed --num_gpus 1 main.py \
    --disable_actor_dropout \
    --enable_hybrid_engine \
    --output_dir $OUTPUT \
-    &> $OUTPUT/training.log
+   | tee $OUTPUT/training.log

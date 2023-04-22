@@ -47,4 +47,4 @@ deepspeed --master_port 12346 main.py \
    --enable_hybrid_engine \
    --actor_lora_module_name decoder.layers. \
    --output_dir $OUTPUT \
-    &> $OUTPUT/training.log
+   | tee $OUTPUT/training.log

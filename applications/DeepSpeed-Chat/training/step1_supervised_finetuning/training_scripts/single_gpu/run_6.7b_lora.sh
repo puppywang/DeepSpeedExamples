@@ -28,4 +28,4 @@ deepspeed --num_gpus 1 main.py \
    --lora_module_name decoder.layers. \
    --deepspeed \
    --output_dir $OUTPUT_PATH \
-   &> $OUTPUT_PATH/training.log
+  | tee $OUTPUT_PATH/training.log

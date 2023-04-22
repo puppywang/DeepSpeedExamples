@@ -49,4 +49,4 @@ deepspeed --master_port 12346 main.py \
    --critic_zero_stage $CRITIC_ZERO_STAGE \
    --enable_ema \
    --output_dir $OUTPUT \
-    &> $OUTPUT/training.log
+   | tee $OUTPUT/training.log

@@ -52,4 +52,4 @@ deepspeed --master_port 12346 main.py \
    --actor_lora_dim 128 \
    --actor_lora_module_name decoder.layers. \
    --output_dir $OUTPUT \
-    &> $OUTPUT/training.log
+   | tee $OUTPUT/training.log
