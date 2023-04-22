@@ -1,9 +1,12 @@
 from transformers import AutoModel, AutoTokenizer
+import transformers
 import sys
 
+transformers.logging.set_verbosity_debug()
+
 def download_model(model_path):
-    AutoTokenizer.from_pretrained(model_path)
-    AutoModel.from_pretrained(model_path)
+    AutoTokenizer.from_pretrained(model_path, resume_download=True)
+    AutoModel.from_pretrained(model_path, resume_download=True)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
