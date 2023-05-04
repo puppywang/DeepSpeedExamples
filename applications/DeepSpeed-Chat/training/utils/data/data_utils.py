@@ -14,6 +14,7 @@ import numpy as np
 import os
 from itertools import chain
 from . import raw_datasets
+from tqdm import tqdm
 
 
 def get_raw_dataset(dataset_name, output_path, seed, local_rank):
@@ -138,8 +139,10 @@ def create_dataset_split(current_dataset, raw_dataset, train_phase, tokenizer,
     prompt_dataset = []
     chosen_dataset = []
     reject_dataset = []
+    bar = tqdm(current_dataset)
+    bar.set_description('Spliting dataset ...')
     if train_phase == 1:
-        for i, tmp_data in enumerate(current_dataset):
+        for tmp_data in bar:
             # tokenize the text
             chosen_sentence = raw_dataset.get_prompt_and_chosen(
                 tmp_data)  # the accept response
@@ -157,7 +160,7 @@ def create_dataset_split(current_dataset, raw_dataset, train_phase, tokenizer,
                 chosen_dataset.append(chosen_token)
 
     elif train_phase == 2:
-        for i, tmp_data in enumerate(current_dataset):
+        for tmp_data in bar:
             # tokenize the text
             chosen_sentence = raw_dataset.get_prompt_and_chosen(
                 tmp_data)  # the accept response
@@ -185,7 +188,7 @@ def create_dataset_split(current_dataset, raw_dataset, train_phase, tokenizer,
                 reject_dataset.append(reject_token)
 
     elif train_phase == 3:
-        for i, tmp_data in enumerate(current_dataset):
+        for tmp_data in bar:
             # tokenize the text
             prompt = raw_dataset.get_prompt(tmp_data)
             if prompt is not None:

@@ -318,7 +318,7 @@ class Wangrui6ZhihuKOLDataset(PromptRawDataset):
         index = get_raw_dataset_split_index(self.local_rank, self.output_path,
                                             self.dataset_name_clean,
                                             self.seed, "train_eval", "9,1", 0,
-                                            len(dataset))
+                                            len(dataset) if len(dataset) < 100000 else 100000)
         dataset = Subset(dataset, index)
         return dataset
 
@@ -328,7 +328,7 @@ class Wangrui6ZhihuKOLDataset(PromptRawDataset):
         index = get_raw_dataset_split_index(self.local_rank, self.output_path,
                                             self.dataset_name_clean,
                                             self.seed, "train_eval", "9,1", 1,
-                                            len(dataset))
+                                            len(dataset) if len(dataset) < 100000 else 100000)
         dataset = Subset(dataset, index)
         return dataset
 
